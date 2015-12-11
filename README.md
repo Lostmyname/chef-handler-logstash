@@ -29,11 +29,17 @@ Create a recipe with the following:
 
     # load the gem here so it gets added to the $LOAD_PATH, otherwise chef_handler
     # will fail.
-    require 'chef/handler/chef_profiler'
+    require 'chef/handler/chef_logstash'
 
     # Activate the handler immediately during compile phase
-    chef_handler "Chef::Handler::Profiler" do
-      source "chef/handler/chef_profiler"
+    chef_handler "Chef::Handler::Logstash" do
+      source "chef/handler/chef_logstash"
+      arguments [
+         :host => 'your_logstash_host', 
+         :port => 'your_logstash_port',
+         :tags => 'array_of_tags',
+         :timeout => 'timeout when trying to reach the logstash server. Integer'
+      ]
       action :nothing
     end.run_action(:enable)
 
@@ -48,9 +54,9 @@ them:
 Then add to the configuration (`/etc/chef/solo.rb` for chef-solo or
 `/etc/chef/client.rb` for chef-client):
 
-    require "chef/handler/chef_profiler"
-    report_handlers << Chef::Handler::Profiler.new
-    exception_handlers << Chef::Handler::Profiler.new
+    require "chef/handler/chef_logstash"
+    report_handlers << Chef::Handler::Logstash.new(:host => 'foo', :port => 'bar', :timeout => 15, :tags => ['chef-client'])
+    exception_handlers << Chef::Handler::Logstash.new(:host => 'foo', :port => 'bar', :timeout => 15, :tags => ['chef-client'])
 
 
 License and Author
