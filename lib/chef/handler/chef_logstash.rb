@@ -6,7 +6,6 @@ require "timeout"
 class Chef
   class Handler
     class Logstash < Chef::Handler
-      VERSION = '0.0.2'
       attr_writer :tags, :host, :port, :timeout
 
       def initialize(options = {})
