@@ -1,6 +1,7 @@
+version = File.open('VERSION', 'rb').read
 Gem::Specification.new do |s|
   s.name = 'chef-handler-logstash'
-  s.version = '0.0.1'
+  s.version = version
   s.platform = Gem::Platform::RUBY
   s.authors = ['LostMyName']
   s.email = ['nadir@lostmy.name']

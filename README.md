@@ -1,7 +1,7 @@
 Description
 ===========
 
-This is a Chef report handler that exports a report in json format to the configured server/port 
+This is a Chef report handler that exports a report in json format to the configured server/port.
 We are using it to report to logstash but probably you can hook it into anything that accepts a json :)
 
 * http://wiki.opscode.com/display/chef/Exception+and+Report+Handlers
@@ -53,12 +53,9 @@ Then add to the configuration (`/etc/chef/solo.rb` for chef-solo or
     exception_handlers << Chef::Handler::Profiler.new
 
 
-### Example output
-
-
 License and Author
 ==================
 
-Licensed under the MIT license. See `LICENSE` file for details.
+Licensed under the MIT license. See `MIT-LICENSE` file for details.
 
 Author:: Nadir Lloret <https://github.com/nadirollo>
