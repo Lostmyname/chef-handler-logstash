@@ -4,6 +4,7 @@ Description
 This is a Chef report handler that exports a report in json format to the configured server/port.
 We are using it to report to logstash but probably you can hook it into anything that accepts a json :)
 
+
 * http://wiki.opscode.com/display/chef/Exception+and+Report+Handlers
 
 Requirements
@@ -35,7 +36,7 @@ Create a recipe with the following:
     chef_handler "Chef::Handler::Logstash" do
       source "chef/handler/chef_logstash"
       arguments [
-         :host => 'your_logstash_host', 
+         :host => 'your_logstash_host',
          :port => 'your_logstash_port',
          :tags => 'array_of_tags',
          :timeout => 'timeout when trying to reach the logstash server. Integer'
